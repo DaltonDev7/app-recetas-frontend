@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
+import { ImagenUploadConfig } from '../../core/models/imagen-upload-confi.model';
 
 @Component({
   selector: 'upload-image',
@@ -9,6 +10,7 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 export class UploadImageComponent implements OnInit {
 
   @Output() imagenUsuario = new EventEmitter<string>();
+  @Input() imagenTipo: string;
   fileToUpload: any;
 
   //atributos cropper-js
@@ -19,6 +21,7 @@ export class UploadImageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 

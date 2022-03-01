@@ -8,22 +8,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import {ToastModule} from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
-  declarations: [
-
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgSelectModule,
-    ToastModule,
-    DialogModule,
-    FormsModule,
-    ConfirmDialogModule,
-    
-  ],
+  imports:[],
   exports:[
     ReactiveFormsModule,
     NgSelectModule,
@@ -31,6 +19,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     FormsModule,
     ToastModule,
     DialogModule,
+    ProgressSpinnerModule,
     ConfirmDialogModule
   ]
 })

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
+import { PostService } from '../../services/post.service';
+import { LOGIN_ERROR } from '../../../../authentication/store/auth.actions';
+import { Combox } from '../../../../core/interfaces/combox';
+import { ComboxboxService } from '../../../../core/services/comboxbox.service';
 
 @Component({
   selector: 'app-add-post',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPostComponent implements OnInit {
 
-  constructor() { }
+  @Input() postForm: FormGroup
+  nivelDificultadCombox: Combox[] = []
+
+  constructor(public postService: PostService, private comboxService: ComboxboxService) { }
 
   ngOnInit(): void {
+    this.nivelDificultadCombox  = this.comboxService.nivelDificultad
+
   }
+
+
 
 }

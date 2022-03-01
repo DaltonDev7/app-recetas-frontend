@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-
 //bootstrap
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 
@@ -13,6 +12,8 @@
 //ngselect
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
+//toast
+@import '~ngx-toastr/toastr';
 
 //FONTS
 @font-face{
@@ -72,6 +73,10 @@ body{
 .form-control:focus{
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0);
 }
+h4{
+    font-family: 'ubuntu-bold';
+}
+
 .p-inputtext{
     padding-top: 6px;
     padding-bottom: 6px;
@@ -86,6 +91,11 @@ input.ng-invalid {
 }
 ng-select.ng-invalid .ng-select-container {
     border-color: #dc3545 !important;
+}
+
+//margin
+.margin-rigth4{
+    margin-right: 4px;
 }
 
 
