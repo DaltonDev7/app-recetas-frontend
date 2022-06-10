@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 
 import { PostService } from '../../profile/usuario/services/post.service';
 import * as fromApp from 'src/app/state/app.state';
-import { getCurrentUser } from '../../authentication/store/index';
+import { getCurrentUser, getIdCurrentUser } from '../../authentication/store/index';
 import { Usuario } from '../models/usuario.model';
 import { take } from 'rxjs/operators';
 
@@ -16,12 +16,12 @@ import { take } from 'rxjs/operators';
 export class GetPostByUserResolver implements Resolve<any> {
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private store: Store<fromApp.State>
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    return this.postService.getPostByIdUser().pipe((take(1)))
-
+      return this.postService.getPostByIdUser(5).pipe((take(1)))
   }
 }
