@@ -4,8 +4,11 @@ import { AddRecetasManagerService } from './add-recetas-manager.service';
 import { Store } from '@ngrx/store';
 import * as postRecetasReducer from 'src/app/profile/usuario/store/post-recetas.reducer';
 import * as postRecetasActions from 'src/app/profile/usuario/store/post-recetas.actions'
-import { getPostSaved, getPostRecetasCamposRequerido } from '../store/index';
+import { getPostSaved, getPostRecetasCamposRequerido, getIdPostReceta } from '../store/index';
 import { Router } from '@angular/router';
+import { DataFormatService } from 'src/app/core/services/data-format.service';
+import { PostService } from '../services/post.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-recetas',
@@ -14,12 +17,14 @@ import { Router } from '@angular/router';
 })
 export class AddRecetasComponent implements OnInit {
 
-
   displayModalRequeridos: boolean = false
   displayModalSavedPost: boolean = false
   showPostForm: boolean = true
 
   constructor(
+    private toast: ToastrService,
+    private dataFormatService: DataFormatService,
+    private postService :  PostService,
     private router: Router,
     public formService: FormService,
     public addRecetasManagerServices: AddRecetasManagerService,
@@ -31,7 +36,8 @@ export class AddRecetasComponent implements OnInit {
 
 
     this.storePostRecetas.select((getPostSaved)).subscribe((data) => {
-      this.displayModalSavedPost = data
+
+      if(data) this.saveImagenesPost()
     })
 
     this.storePostRecetas.select((getPostRecetasCamposRequerido)).subscribe((data) => {
@@ -44,12 +50,37 @@ export class AddRecetasComponent implements OnInit {
   }
 
 
+  private saveImagenesPost(){
+    this.storePostRecetas.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: false }))
+    this.storePostRecetas.select((getIdPostReceta)).subscribe((idCurrentPost)=>{
+
+      console.log(idCurrentPost);
+
+      let imagenesPost = this.dataFormatService.getImagenesPostFormat(idCurrentPost)
+      console.log(imagenesPost);
+
+      this.postService.saveImagenesPost(imagenesPost).subscribe({
+        next:((data)=>{
+          this.displayModalSavedPost = data
+          this.router.navigate(['/me'])
+        }),
+        error:((error)=>{
+          this.toast.error("Ocurrio un error al momento de guardar")
+          console.log(error);
+        })
+      })
+
+
+    })
+  }
+
+
   cerrarModalRequeridos() {
     this.storePostRecetas.dispatch(postRecetasActions.SetPostRecetaCamposRequeridos({ payload: false }))
   }
 
   saveImagenes(cerrar: boolean) {
-    this.storePostRecetas.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: false }))
+
     cerrar == true ? this.showPostForm = false :  this.router.navigate(['/me'])
   }
 

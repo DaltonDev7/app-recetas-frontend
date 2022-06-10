@@ -11,6 +11,8 @@ import { Store } from '@ngrx/store';
 import * as postRecetasReducer from 'src/app/profile/usuario/store/post-recetas.reducer';
 import * as postRecetasActions from '../store/post-recetas.actions'
 import { getIdPostReceta } from '../store';
+import { ImagenesPortadaPostService } from 'src/app/core/services/imagenes-portada-post.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class AddRecetasManagerService {
@@ -19,6 +21,8 @@ export class AddRecetasManagerService {
   private showModal: any;
 
   constructor(
+    private toast : ToastrService,
+    private imagenesPortadaPostService: ImagenesPortadaPostService,
     private fb: FormBuilder,
     private formService: FormService,
     private formBuilderService: FormBuilderService,
@@ -45,25 +49,31 @@ export class AddRecetasManagerService {
 
   public save() {
 
+    let imagenes: string[] = this.imagenesPortadaPostService.getImagenesPost()
     let mainForm = this.formService.getMainForm()
+    console.log(imagenes);
 
     if (mainForm.valid) {
+      if(imagenes.length >= 1){
+        let payload: PostRecetaSave = {
+          PostReceta: this.dataFormatService.getPostData(),
+          Ingredientes: this.formService.getIngredientesReecetasForm().value,
+          PasosRecetas: this.formService.getPasosRecetasForm().value,
+          Nutricion : this.formService.getNutricionRecetaForm().value
+        }
 
-      let payload: PostRecetaSave = {
-        PostReceta: this.dataFormatService.getPostData(),
-        Ingredientes: this.formService.getIngredientesReecetasForm().value,
-        PasosRecetas: this.formService.getPasosRecetasForm().value,
-        Nutricion : this.formService.getNutricionRecetaForm().value
+        this.storePostReceta.dispatch(postRecetasActions.SavedPost(payload))
+      }else{
+        this.toast.info("Debes subir al menos una foto de portada.")
       }
 
-      this.storePostReceta.dispatch(postRecetasActions.SavedPost(payload))
-
     } else {
-
       this.storePostReceta.dispatch(postRecetasActions.SetPostRecetaCamposRequeridos({ payload: true }))
     }
-
   }
+
+
+
 
 
 }

@@ -34,6 +34,8 @@ export class PostRecetasEffects {
                 return this.postService.savePost(payload).pipe(
                     map((data: PostCreatedDTO) => {
                         mainForm.reset()
+                        console.log(data);
+
                         return this.storePostReceta.dispatch(postRecetasActions.SetIdPost({ IdPost: data.IdPost }))
                     })
                 )
@@ -47,7 +49,7 @@ export class PostRecetasEffects {
         () => this.action$.pipe(
             ofType(postRecetasActions.SetIdPost),
             tap(() => {
-                
+
                 return this.storePostReceta.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: true }))
             })
         ),
