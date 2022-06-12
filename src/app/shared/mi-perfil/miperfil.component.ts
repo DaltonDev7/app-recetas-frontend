@@ -33,7 +33,7 @@ export class MiperfilComponent implements OnInit {
 
     this.activedRouted.data.subscribe((data:any) => {
       console.log(data);
-      this.postRecetas = data.postsUsuarios
+     this.postRecetas = data.postsUsuarios
     })
 
   }

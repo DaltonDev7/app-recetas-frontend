@@ -67,6 +67,8 @@ export class SignupComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Las contraseñas no coinciden' });
     } else {
       this.registroValidator.validateImgUsuario(this.imgUser, this.signUpForm)
+      console.log(this.signUpForm.value);
+
       this.signUpService.registrarUsuario(this.signUpForm.value).subscribe({
         next: ((data) => {
           this.messageService.add({ sticky: true, key: "Key1", severity: 'success', summary: 'Success', detail: 'Usuario registrado correctamente. Revise su correo electronico  para activar su cuenta.' });

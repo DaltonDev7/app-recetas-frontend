@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { DataFormatService } from 'src/app/core/services/data-format.service';
 import { PostService } from '../services/post.service';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-add-recetas',
@@ -24,7 +25,7 @@ export class AddRecetasComponent implements OnInit {
   constructor(
     private toast: ToastrService,
     private dataFormatService: DataFormatService,
-    private postService :  PostService,
+    private postService: PostService,
     private router: Router,
     public formService: FormService,
     public addRecetasManagerServices: AddRecetasManagerService,
@@ -37,7 +38,10 @@ export class AddRecetasComponent implements OnInit {
 
     this.storePostRecetas.select((getPostSaved)).subscribe((data) => {
 
-      if(data) this.saveImagenesPost()
+      if (data) {
+        this.storePostRecetas.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: false }))
+        this.displayModalSavedPost = data
+      }
     })
 
     this.storePostRecetas.select((getPostRecetasCamposRequerido)).subscribe((data) => {
@@ -50,9 +54,9 @@ export class AddRecetasComponent implements OnInit {
   }
 
 
-  private saveImagenesPost(){
+  private saveImagenesPost() {
     this.storePostRecetas.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: false }))
-    this.storePostRecetas.select((getIdPostReceta)).subscribe((idCurrentPost)=>{
+    this.storePostRecetas.select((getIdPostReceta)).pipe(take(1)).subscribe((idCurrentPost) => {
 
       console.log(idCurrentPost);
 
@@ -60,11 +64,11 @@ export class AddRecetasComponent implements OnInit {
       console.log(imagenesPost);
 
       this.postService.saveImagenesPost(imagenesPost).subscribe({
-        next:((data)=>{
+        next: ((data) => {
           this.displayModalSavedPost = data
-          this.router.navigate(['/me'])
+          //  this.router.navigate(['/me'])
         }),
-        error:((error)=>{
+        error: ((error) => {
           this.toast.error("Ocurrio un error al momento de guardar")
           console.log(error);
         })
@@ -81,7 +85,7 @@ export class AddRecetasComponent implements OnInit {
 
   saveImagenes(cerrar: boolean) {
 
-    cerrar == true ? this.showPostForm = false :  this.router.navigate(['/me'])
+    cerrar == true ? this.showPostForm = false : this.router.navigate(['/me'])
   }
 
 }

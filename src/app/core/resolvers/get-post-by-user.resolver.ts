@@ -15,13 +15,20 @@ import { take } from 'rxjs/operators';
 @Injectable()
 export class GetPostByUserResolver implements Resolve<any> {
 
+  idUsuario: number;
+
   constructor(
     private postService: PostService,
     private store: Store<fromApp.State>
-  ) { }
+  ) {
+    this.store.select((getIdCurrentUser)).subscribe((idUser) => {
+
+      this.idUsuario = idUser
+    })
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-      return this.postService.getPostByIdUser(5).pipe((take(1)))
+    return this.postService.getPostByIdUser(this.idUsuario).pipe((take(1)))
   }
 }

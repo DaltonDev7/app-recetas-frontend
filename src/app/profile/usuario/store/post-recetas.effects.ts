@@ -15,46 +15,55 @@ import { FormService } from "src/app/core/services/form.service";
 export class PostRecetasEffects {
 
 
-    constructor(
-        private formService: FormService,
-        private action$: Actions,
-        private router: Router,
-        private postService: PostService,
-        private storePostReceta: Store<postRecetasReducer.PostRecetasState>
-    ) { }
+  constructor(
+    private dataFormatService: DataFormatService,
+    private formService: FormService,
+    private action$: Actions,
+    private router: Router,
+    private postService: PostService,
+    private storePostReceta: Store<postRecetasReducer.PostRecetasState>
+  ) { }
 
 
-    savePost$ = createEffect(
-        () => this.action$.pipe(
-            ofType(postRecetasActions.SavedPost),
-            exhaustMap((payload) => {
+  savePost$ = createEffect(
+    () => this.action$.pipe(
+      ofType(postRecetasActions.SavedPost),
+      exhaustMap((payload) => {
 
-                let mainForm = this.formService.getMainForm()
+        let mainForm = this.formService.getMainForm()
 
-                return this.postService.savePost(payload).pipe(
-                    map((data: PostCreatedDTO) => {
-                        mainForm.reset()
-                        console.log(data);
+        return this.postService.savePost(payload).pipe(
+          map((data: PostCreatedDTO) => {
+            mainForm.reset()
+            console.log(data);
 
-                        return this.storePostReceta.dispatch(postRecetasActions.SetIdPost({ IdPost: data.IdPost }))
-                    })
-                )
+            let imagenesPost = this.dataFormatService.getImagenesPostFormat(data.IdPost)
+
+            this.postService.saveImagenesPost(imagenesPost).subscribe((data)=>{
+              console.log(data);
+
+              return this.storePostReceta.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: true }))
 
             })
-        ),
-        { dispatch: false }
-    )
 
-    idPostSaved$ = createEffect(
-        () => this.action$.pipe(
-            ofType(postRecetasActions.SetIdPost),
-            tap(() => {
+          })
+        )
 
-                return this.storePostReceta.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: true }))
-            })
-        ),
-        { dispatch: false }
-    )
+      })
+    ),
+    { dispatch: false }
+  )
+
+  idPostSaved$ = createEffect(
+    () => this.action$.pipe(
+      ofType(postRecetasActions.SetIdPost),
+      tap(() => {
+
+        return this.storePostReceta.dispatch(postRecetasActions.SetPostRecetaSaved({ payload: true }))
+      })
+    ),
+    { dispatch: false }
+  )
 
 }
 
