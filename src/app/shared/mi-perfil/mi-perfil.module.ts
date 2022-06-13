@@ -7,6 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import { GetPostByUserResolver } from 'src/app/core/resolvers/get-post-by-user.resolver';
 import {CardModule} from 'primeng/card';
 import {BadgeModule} from 'primeng/badge';
+import { SharedModule } from '../shared.module';
 @NgModule({
   declarations: [
     MiperfilComponent
@@ -17,7 +18,8 @@ import {BadgeModule} from 'primeng/badge';
     ImagenPerfilModule,
     ButtonModule,
     CardModule,
-    BadgeModule
+    BadgeModule,
+    SharedModule
   ],
   providers:[
     GetPostByUserResolver
