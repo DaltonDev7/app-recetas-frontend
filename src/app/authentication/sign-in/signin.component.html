@@ -22,8 +22,9 @@
                     </div>
                 </div>
                 <div class="section-button">
-                    <button 
+                    <button
                     (click)="login()"
+                    [disabled]="!loginForm.valid"
                     class="btn btn-base">
                         Iniciar Sesión
                     </button>

@@ -13,10 +13,12 @@
                 <app-add-post [postForm]="formService.getPostForm()"> </app-add-post>
 
                 <app-ingrediente-recetas [ingredienteRecetasForm]="formService.getIngredientesReecetasForm()"> </app-ingrediente-recetas>
-                
+
                 <app-pasos-recetas [pasosRecetaForm]="formService.getPasosRecetasForm()"> </app-pasos-recetas>
-                
+
                 <app-nutricion-recetas [nutricionForm]="formService.getNutricionRecetaForm()" > </app-nutricion-recetas>
+
+                <app-imagenes-post> </app-imagenes-post>
 
                 <div>
                     <button pButton pRipple type="button" label="Guargar" class="p-button-success" (click)="onSave()"></button>
@@ -24,8 +26,8 @@
 
             </ng-container>
 
-            <div  *ngIf="!showPostForm">
-                <app-imagenes-post> </app-imagenes-post>
+            <div>
+
 
             </div>
 
@@ -54,11 +56,5 @@
 <!-- modal Post Guardado-->
 <p-dialog header="Receta guardada" [(visible)]="displayModalSavedPost" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
-    <p class="p-m-0 post-saved">Tu nueva receta se ha publicado correctamente! <i class="fa-solid fa-face-smile-wink  img-happy"></i> 
-    ¿Desea agregar imagenes?
-    </p>
-        <ng-template pTemplate="footer">
-            <p-button icon="pi pi-times" (click)="saveImagenes(false)" label="Cancelar" class="p-button-text"></p-button>
-            <p-button icon="pi pi-check" (click)="saveImagenes(true)" label="De acuerdo!" class="p-button-text"></p-button>
-        </ng-template>
+    <p class="p-m-0 post-saved">Tu nueva receta se ha publicado correctamente! <i class="fa-solid fa-face-smile-wink  img-happy"></i>
 </p-dialog>

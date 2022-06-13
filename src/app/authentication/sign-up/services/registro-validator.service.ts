@@ -26,11 +26,11 @@ export class RegistroValidatorService {
       switch (sexoValue) {
         case 1:
           imagenPerfil.patchValue('boy.jpg')
-          imagenDefecto.patchValue(true)
+          imagenDefecto.patchValue(1)
           break;
         case 2:
           imagenPerfil.patchValue('girl.jpg')
-          imagenDefecto.patchValue(true)
+          imagenDefecto.patchValue(1)
           break;
       }
 

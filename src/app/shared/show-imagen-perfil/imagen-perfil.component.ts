@@ -30,6 +30,7 @@ export class ImagenPerfilComponent implements OnInit {
     this.store.select((getCurrentUser)).subscribe((usuario: Usuario) => {
       this.usuario = usuario
 
+      console.log(usuario);
 
       if (usuario.ImagenDefecto) {
 
@@ -45,7 +46,7 @@ export class ImagenPerfilComponent implements OnInit {
 
   private getImagenUsuario() {
     this.usuarioService.getImagenUsuario(this.usuario.ImagenPerfil).subscribe({
-      next: ((data:any) => {
+      next: ((data: any) => {
         this.imagenUsuario = data.imagen
       }),
       error: ((error) => {

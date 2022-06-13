@@ -7,11 +7,11 @@ export const MENU_OPCIONES: MenuOpciones[] = [
         route: ''
     },
     {
-        label: 'Recetas',
-        route: 'recetas'
-    },
-    {
         label: 'Populares',
         route: ''
-    }
+    },
+    {
+        label: 'Usuarios',
+        route: ''
+    },
 ]
