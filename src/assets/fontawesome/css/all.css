@@ -3919,6 +3919,15 @@ readers do not read off random characters that represent icons */
 .fa-pizza-slice::before {
   content: "\f818"; }
 
+.fa-bowl-food::before {
+    content: "\f818"; }
+
+
+.fa-pie::before {
+  content: "\f705"; }
+
+.fa-pie-chart::before
+
 .fa-place-of-worship::before {
   content: "\f67f"; }
 

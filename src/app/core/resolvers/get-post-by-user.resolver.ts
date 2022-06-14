@@ -21,14 +21,14 @@ export class GetPostByUserResolver implements Resolve<any> {
     private postService: PostService,
     private store: Store<fromApp.State>
   ) {
+
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     this.store.select((getIdCurrentUser)).subscribe((idUser) => {
 
       this.idUsuario = idUser
     })
-  }
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
     return this.postService.getPostByIdUser(this.idUsuario).pipe((take(1)))
   }
 }

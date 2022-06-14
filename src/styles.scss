@@ -16,39 +16,45 @@
 @import '~ngx-toastr/toastr';
 
 //FONTS
-@font-face{
-    font-family:'lilita-one';
-    src: url('assets/fonts/LilitaOne-Regular.ttf');
-}
 @font-face {
-    font-family: 'montserrat-medium';
-    src: url('assets/fonts/montserrat/Montserrat-Medium.ttf');
+  font-family: 'lilita-one';
+  src: url('assets/fonts/LilitaOne-Regular.ttf');
 }
+
 @font-face {
-    font-family: 'montserrat-regular';
-    src: url('assets/fonts/montserrat/Montserrat-Regular.ttf');
-}
-@font-face{
-    font-family: 'ubuntu-bold';
-    src: url('assets/fonts/ubuntu/Ubuntu-Bold.ttf');
-}
-@font-face{
-    font-family: 'ubuntu-regular';
-    src: url('assets/fonts/ubuntu/Ubuntu-Regular.ttf');
-}
-@font-face{
-    font-family: 'opensans-light';
-    src: url('assets/fonts/openssans/OpenSans-Light.ttf');
-}
-@font-face{
-    font-family: 'opensans-regular';
-    src: url('assets/fonts/openssans/OpenSans-Regular.ttf');
-}
-@font-face{
-    font-family: 'opensans-medium';
-    src: url('assets/fonts/openssans/OpenSans-Medium.ttf');
+  font-family: 'montserrat-medium';
+  src: url('assets/fonts/montserrat/Montserrat-Medium.ttf');
 }
 
+@font-face {
+  font-family: 'montserrat-regular';
+  src: url('assets/fonts/montserrat/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'ubuntu-bold';
+  src: url('assets/fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'ubuntu-regular';
+  src: url('assets/fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'opensans-light';
+  src: url('assets/fonts/openssans/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'opensans-regular';
+  src: url('assets/fonts/openssans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'opensans-medium';
+  src: url('assets/fonts/openssans/OpenSans-Medium.ttf');
+}
 
 
 
@@ -56,75 +62,89 @@
 
 
 
-body{
-    background-color: #F4F6F9 !important;
+
+body {
+  background-color: #F4F6F9 !important;
 }
 
 //sombra
-.sombra{
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+.sombra {
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
-.cursor{
-    cursor: pointer;
+.cursor {
+  cursor: pointer;
 }
 
 //inputs
-.form-control:focus{
-    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0);
-}
-h4{
-    font-family: 'ubuntu-bold';
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0);
 }
 
-.p-inputtext{
-    padding-top: 6px;
-    padding-bottom: 6px;
+h4 {
+  font-family: 'ubuntu-bold';
+}
 
-    padding-right:12px;
-    padding-left: 12px;
+.p-inputtext {
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 
 input.ng-invalid {
-    border: 1px solid #f00 !important;
-}
-ng-select.ng-invalid .ng-select-container {
-    border-color: #dc3545 !important;
+  border: 1px solid #f00 !important;
 }
 
-.negate-invalid{
+ng-select.ng-invalid .ng-select-container {
+  border-color: #dc3545 !important;
+}
+
+.negate-invalid {
   border-color: initial !important;
 }
 
 //margin
-.margin-rigth4{
-    margin-right: 4px;
+.margin-rigth4 {
+  margin-right: 4px;
 }
 
 //boton base
-.btn-base{
-    width: 100%;
-    font-family: 'ubuntu-bold';
-    font-weight: 600;
-    background: #5854E5;
-    border: none;
-    color: #fff;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-radius: 12px;
+.btn-base {
+  width: 100%;
+  font-family: 'ubuntu-bold';
+  font-weight: 600;
+  background: #5854E5;
+  border: none;
+  color: #fff;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 12px;
 }
 
 
 //card
-.p-card-body{
-    padding: 12px !important;
-}
-.p-card-content{
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+.p-card-body {
+  padding: 12px !important;
 }
 
-.p-element{
-    padding: 10px  !important;
+.p-card-content {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.p-element {
+  padding: 10px !important;
+}
+
+.post-card {
+  transition: all .3s ease-out;
+
+  // height: 190px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }

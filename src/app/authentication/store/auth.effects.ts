@@ -34,7 +34,7 @@ export class AuthEffects {
     private rediretService: RedireccionarPerfilService,
     private jwtHelper: JwtHelperService,
     private toast: ToastrService
-  ) {}
+  ) { }
 
   loginStart$ = createEffect(
     () =>
@@ -71,16 +71,25 @@ export class AuthEffects {
       this.action$.pipe(
         ofType(authActions.LoginSuccess),
         tap((data) => {
+          console.log(data);
+
           if (data.redirect) {
+
             //Verificamos si el usuario tiene mas de un rol asignado
             if (data.payload.Roles.length > 1) {
               if (data.iniciarSesionFirstTime) {
                 this.router.navigate(['/seleccion-perfil']);
               }
             } else {
-              this.router.navigate([
-                this.rediretService.redirect(data.payload.Roles[0]),
-              ]);
+              if (data.iniciarSesionFirstTime) {
+                console.log('aqui');
+                this.router.navigate([this.rediretService.redirect(data.payload.Roles[0])])
+
+              }
+
+              // this.router.navigate([
+              //   this.rediretService.redirect(data.payload.Roles[0]),
+              // ]);
             }
           } else {
             localStorage.removeItem(tokenName);

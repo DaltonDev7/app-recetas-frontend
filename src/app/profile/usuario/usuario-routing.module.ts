@@ -21,8 +21,12 @@ const routes: Routes = [
     loadChildren: () => import('./add-recetas/add-recetas.module').then(m => m.AddRecetasModule)
   },
   {
-    path: 'recetas',
-    loadChildren: () => import('../../shared/recetas/receta.module').then(m => m.RecetaModule)
+    path: 'populares',
+    loadChildren: () => import('../../shared/recetas-populares/recetas-populares.module').then(m => m.RecetasPopularesModule)
+  },
+  {
+    path:'users',
+    loadChildren: () => import('../../shared/list-usuario/list-usuario.module').then(m => m.ListUsuarioModule)
   }
 ]
 

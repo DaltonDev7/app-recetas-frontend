@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
 
   capturarImagenUsuario(valor: any) {
     this.imgUser = valor
-    this.signUpForm.get('ImagenDefecto').patchValue(false)
+    this.signUpForm.get('ImagenDefecto').patchValue(0)
   }
 
 

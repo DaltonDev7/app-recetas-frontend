@@ -8,10 +8,10 @@ export const MENU_OPCIONES: MenuOpciones[] = [
     },
     {
         label: 'Populares',
-        route: ''
+        route: 'populares'
     },
     {
         label: 'Usuarios',
-        route: ''
+        route: 'users'
     },
 ]
