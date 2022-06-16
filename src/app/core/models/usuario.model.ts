@@ -1,3 +1,4 @@
+import { Post } from "./post.model";
 import { Rol } from "./rol.model";
 
 
@@ -12,5 +13,6 @@ export interface Usuario {
     ImagenPerfil?:string;
     ImagenDefecto?:boolean
     ImageFile?:string
+    PostReceta?: any[]
     Roles:  Rol[]
 }

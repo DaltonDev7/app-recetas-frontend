@@ -29,72 +29,33 @@
 <div class="container">
 
     <div class="row">
-        <ng-container *ngFor="let item of postRecetas">
-
-
-            <p-card class="col-lg-4 col-md-6 col-sm-12 mb-5 post-card">
-                <div class="post-hearder mb-3">
-                    <div class="img-user">
-                        <img [src]="item.UsuarioImagen" alt="">
-                    </div>
-                    <div class="post-user-info">
-                        <h6>{{item.UsuarioNombre}} {{item.UsuarioApellidos}}</h6>
-                        <p>{{item.FechaCreacion | date:'medium' }}</p>
-                    </div>
-                </div>
-
-                <div class="post-body mb-2">
-                    <img [src]="item.ImagenPost" alt="">
-                </div>
-                <div class="post-footer">
-                     <h6> {{item.Titulo}} </h6>
-
-                    <div [ngSwitch]="item.IdNivelDificultad">
-
-                        <p-badge
-                           *ngSwitchCase="1"
-                           value="{{item.NivelDificultad}}"
-                           size="small"
-                           severity="success"> {{item.NivelDificultad}}
-                         </p-badge>
-                        <p-badge
-                           *ngSwitchCase="2"
-                           value="{{item.NivelDificultad}}"
-                           size="small"
-                           severity="info"> {{item.NivelDificultad}}
-                         </p-badge>
-                        <p-badge
-                           *ngSwitchCase="3"
-                           value="{{item.NivelDificultad}}"
-                           size="small"
-                           severity="danger"> {{item.NivelDificultad}}
-                         </p-badge>
-                        <p-badge
-                           *ngSwitchCase="4"
-                           value="{{item.NivelDificultad}}"
-                           size="small"
-                           severity="warning"> {{item.NivelDificultad}}
-                         </p-badge>
-
-                    </div>
-
-                    <!-- <span *ngIf="item.IdNivelDificultad == 1" class="badge badge-success">{{item.NivelDiificultad}}</span> -->
 
 
 
+        <div *ngFor="let item of postRecetas" class="col-lg-4 col-md-6 col-sm-12 mb-5 post-card">
 
-                    <!-- <span *ngIf="item.IdNivelDificultad == 3" class="badge badge-danger">{{item.NivelDiificultad}}</span>
-                    <span *ngIf="item.IdNivelDificultad == 4" class="badge badge-dark">{{item.NivelDiificultad}}</span> -->
-
-                </div>
-
-
-            </p-card>
-
-        </ng-container>
+          <post-receta [post]="item"> </post-receta>
+        </div>
     </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <h5>Basic</h5>
 <p-button label="Submit"></p-button>

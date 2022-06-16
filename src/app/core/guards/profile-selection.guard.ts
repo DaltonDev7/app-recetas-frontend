@@ -32,6 +32,7 @@ export class ProfileSelectionGuard implements CanActivate {
             return true;
           } else {
             //  this.notification.error("Su usuario no está permitido para utilizar este perfil. Por favor contacte con soporte técnico.");
+
             return this.router.createUrlTree(['/login']);
           }
         })

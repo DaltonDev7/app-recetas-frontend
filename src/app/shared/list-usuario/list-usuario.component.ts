@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListUsuariosDTO } from 'src/app/core/models/list-usuarios-dto';
 import { UsuarioService } from 'src/app/core/services/usuario.service';
 
@@ -13,24 +13,26 @@ export class ListUsuarioComponent implements OnInit {
   listUsuarios: ListUsuariosDTO[] = []
   filterUser: string;
 
-  constructor(private activeRouter: ActivatedRoute, private usuarioService: UsuarioService) { }
+  constructor(
+    private router: Router,
+    private activeRouter: ActivatedRoute,
+    private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.activeRouter.data.subscribe((data: any) => {
       this.listUsuarios = data.usuarios.data
-      console.log(this.listUsuarios);
     })
   }
 
   buscadorUsuarios(event: any) {
-    console.log(this.filterUser);
-
-    this.usuarioService.buscadorUsuario(event).subscribe((data:any) => {
-      console.log(data);
+    this.usuarioService.buscadorUsuario(event).subscribe((data: any) => {
       this.listUsuarios = data.data
-
     })
 
+  }
+
+  navigateUser(userName: string) {
+    this.router.navigate([userName], { relativeTo: this.activeRouter })
   }
 
 

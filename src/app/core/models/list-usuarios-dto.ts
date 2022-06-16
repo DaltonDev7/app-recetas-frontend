@@ -4,5 +4,6 @@ export interface ListUsuariosDTO {
   Id?:number
   ImgUsuario?:string
   NombreCompleto?:string
+  UserName?:string
   RecetasCount?:number
 }

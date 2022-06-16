@@ -44,4 +44,8 @@ export class UsuarioService {
     return this.http.post<ListUsuariosDTO[]>(`${environment.foodApp}/usuario/BuscadorUser`, data)
   }
 
+  public getUsuarioByUserName(userName:string){
+    return this.http.get(`${environment.foodApp}/usuario/GetUserByUserName/${userName}`)
+  }
+
 }

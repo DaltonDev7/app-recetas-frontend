@@ -11,6 +11,10 @@ const routes: Routes = [
     resolve : {
       usuarios : ListUsuarioResolver
     }
+  },
+  {
+    path:':username',
+    loadChildren: () => import('../perfil-usuario/perfil-usuario.module').then(m => m.PerfilUsuarioModule)
   }
 ]
 
