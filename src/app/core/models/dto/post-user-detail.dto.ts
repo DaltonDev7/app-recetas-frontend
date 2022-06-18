@@ -1,3 +1,4 @@
+import { NivelDificultad } from "../nivel-dificultad.model"
 
 export interface PostUserDetailDTO{
   Id?:number
@@ -6,7 +7,7 @@ export interface PostUserDetailDTO{
   Titulo?:string
   FechaCreacion?:Date
   IdNivelDificultad?:number
-  NivelDificultad?:number
+  NivelDificultad?:NivelDificultad
   UsuarioImagen?:string
   ImagenPost?:string
 }

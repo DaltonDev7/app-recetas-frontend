@@ -21,16 +21,20 @@ export class PostService {
     private http: HttpClient
     ) { }
 
-  savePost(payload: PostRecetaSave) {
+  public savePost(payload: PostRecetaSave) {
     return this.http.post<any>(`${environment.foodApp}/postreceta/Save`, payload)
   }
 
-  saveImagenesPost(payload: FormData) {
+  public saveImagenesPost(payload: FormData) {
     return this.http.post<any>(`${environment.foodApp}/postreceta/SaveImagenesPost`, payload, this.attachementHeaders)
   }
 
-  getPostByIdUser(IdUser:number){
+  public getPostByIdUser(IdUser:number){
     return this.http.get<any>(`${environment.foodApp}/postreceta/GetPostByUser/${IdUser}`)
+  }
+
+  public getPostById(idPost:number){
+    return this.http.get<any>(`${environment.foodApp}/postreceta/GetPostById/${idPost}`)
   }
 
 

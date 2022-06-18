@@ -4,6 +4,7 @@ import { PostComponent } from './post.component';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
+import { NivelDificultadModule } from '../nivel-dificultad/nivel-dificultad.module';
 
 
 
@@ -16,6 +17,7 @@ import { BadgeModule } from 'primeng/badge';
     ButtonModule,
     CardModule,
     BadgeModule,
+    NivelDificultadModule
   ],
   exports:[
     PostComponent

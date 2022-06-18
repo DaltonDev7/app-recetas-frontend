@@ -1,0 +1,14 @@
+<div [ngSwitch]="nivelDificultad.Id">
+
+  <p-badge *ngSwitchCase="1" value="{{nivelDificultad.Nombre}}" size="small" severity="success">
+    {{nivelDificultad.Nombre}}
+  </p-badge>
+  <p-badge *ngSwitchCase="2" value="{{nivelDificultad.Nombre}}" size="small" severity="info"> {{nivelDificultad.Nombre}}
+  </p-badge>
+  <p-badge *ngSwitchCase="3" value="{{nivelDificultad.Nombre}}" size="small" severity="danger">
+    {{nivelDificultad.Nombre}}
+  </p-badge>
+  <p-badge *ngSwitchCase="4" value="{{nivelDificultad.Nombre}}" size="small" severity="warning">
+    {{nivelDificultad.Nombre}}
+  </p-badge>
+</div>

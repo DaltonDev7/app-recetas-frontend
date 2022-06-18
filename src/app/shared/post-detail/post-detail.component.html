@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-6 col-md-6 col-sm-12  postDetail">
+
+
+      <div class="post-hearder">
+        <div class="img-user">
+          <img [src]="post.UsuarioImagen" alt="">
+        </div>
+        <div class="post-user-info">
+          <h6>{{post.UsuarioNombre}} {{post.UsuarioApellido}}</h6>
+          <p>{{ FechaCreacionFormated }}</p>
+        </div>
+      </div>
+
+
+
+      <p-galleria [value]="imagenesPost" [responsiveOptions]="responsiveOptions" class="imagenes-post"
+        [containerStyle]="{'max-width': '500px','margin':'auto'}" [numVisible]="5" [showThumbnails]="false"
+        [showIndicators]="true" [changeItemOnIndicatorHover]="true" [showIndicatorsOnItem]="true">
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item.previewImageSrc" style="width: 100%; display: block;" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="grid grid-nogutter justify-content-center">
+            <img [src]="item.thumbnailImageSrc" style="display: block;" />
+          </div>
+        </ng-template>
+      </p-galleria>
+
+
+      <div>
+        <h4>{{post.Titulo}}</h4>
+        <p>{{post.Descripcion}}</p>
+        <nivel-dificultad [nivelDificultad]="post.NivelDificultad"> </nivel-dificultad>
+        <p>Receta para : {{post.CantidadPersona}} personas</p>
+      </div>
+
+
+
+      <p-tabView>
+        <p-tabPanel header="Ingredientes">
+          <ul *ngFor="let ingrediente of post.Ingredientes; index as i">
+            <li>{{i+1}} {{ingrediente.Descripcion}}</li>
+          </ul>
+        </p-tabPanel>
+        <p-tabPanel header="Instrucciones">
+          <ul *ngFor="let pasos of post.PasosRecetas; index as i">
+            <li>{{i+1}} {{pasos.Descripcion}}</li>
+          </ul>
+        </p-tabPanel>
+        <p-tabPanel header="Nutricion">
+
+          <div *ngIf="post.Nutricion == null">
+            <p>El creador aun no ha suministrado esta informacion</p>
+          </div>
+
+          <ng-container *ngIf="post.Nutricion == null;else nutricionData"></ng-container>
+          <ng-template #nutricionData>
+            <ng-container>
+              <div class="d-flex">
+                <div class="section-nutricion">
+                  <p>{{nutricion.Calorias}} <b> Cal </b> </p>
+                  <p>{{nutricion.Grasas}} <b>g</b> </p>
+                  <p>{{nutricion.Azucares}} <b>g</b></p>
+                </div>
+                <div class="section-nutricion">
+                  <p>{{nutricion.Proteinas}} <b>g</b></p>
+                  <p>{{nutricion.Sodio}} <b>mg</b> </p>
+                  <p>{{nutricion.Carbohidratos}} <b>g</b> </p>
+                </div>
+              </div>
+
+            </ng-container>
+          </ng-template>
+
+
+        </p-tabPanel>
+      </p-tabView>
+
+
+
+
+
+    </div>
+  </div>
+</div>

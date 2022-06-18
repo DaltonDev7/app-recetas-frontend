@@ -27,7 +27,11 @@ const routes: Routes = [
   {
     path:'users',
     loadChildren: () => import('../../shared/list-usuario/list-usuario.module').then(m => m.ListUsuarioModule)
-  }
+  },
+  {
+    path: 'post',
+    loadChildren: () => import('../../shared/post-detail/post-detail.module').then(m => m.PostDetailModule),
+  },
 ]
 
 

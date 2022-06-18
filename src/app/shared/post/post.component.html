@@ -1,4 +1,4 @@
-<p-card class="post-card">
+<p-card class="post-card"  (click)="navigateToPost(post.Id)">
   <div class="post-hearder mb-3">
     <div class="img-user">
       <img [src]="post.UsuarioImagen" alt="">
@@ -13,20 +13,6 @@
   </div>
   <div class="post-footer">
     <h6> {{post.Titulo}} </h6>
-
-    <div [ngSwitch]="post.IdNivelDificultad">
-
-      <p-badge *ngSwitchCase="1" value="{{post.NivelDificultad}}" size="small" severity="success">
-        {{post.NivelDificultad}}
-      </p-badge>
-      <p-badge *ngSwitchCase="2" value="{{post.NivelDificultad}}" size="small" severity="info"> {{post.NivelDificultad}}
-      </p-badge>
-      <p-badge *ngSwitchCase="3" value="{{post.NivelDificultad}}" size="small" severity="danger">
-        {{post.NivelDificultad}}
-      </p-badge>
-      <p-badge *ngSwitchCase="4" value="{{post.NivelDificultad}}" size="small" severity="warning">
-        {{post.NivelDificultad}}
-      </p-badge>
-    </div>
+    <nivel-dificultad [nivelDificultad]="post.NivelDificultad"> </nivel-dificultad>
   </div>
 </p-card>

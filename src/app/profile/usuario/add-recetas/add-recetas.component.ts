@@ -66,7 +66,7 @@ export class AddRecetasComponent implements OnInit {
       this.postService.saveImagenesPost(imagenesPost).subscribe({
         next: ((data) => {
           this.displayModalSavedPost = data
-          //  this.router.navigate(['/me'])
+          this.router.navigate(['/me'])
         }),
         error: ((error) => {
           this.toast.error("Ocurrio un error al momento de guardar")
@@ -84,7 +84,6 @@ export class AddRecetasComponent implements OnInit {
   }
 
   saveImagenes(cerrar: boolean) {
-
     cerrar == true ? this.showPostForm = false : this.router.navigate(['/me'])
   }
 
