@@ -33,8 +33,8 @@
       <div>
         <h4>{{post.Titulo}}</h4>
         <p>{{post.Descripcion}}</p>
-        <nivel-dificultad [nivelDificultad]="post.NivelDificultad"> </nivel-dificultad>
         <p>Receta para : {{post.CantidadPersona}} personas</p>
+        <nivel-dificultad [nivelDificultad]="post.NivelDificultad"> </nivel-dificultad>
       </div>
 
 
@@ -79,6 +79,9 @@
         </p-tabPanel>
       </p-tabView>
 
+
+      <h5>Deja tu calificacion :)</h5>
+      <p-rating [(ngModel)]="val2" (onRate)="onRateValue($event)"></p-rating>
 
 
 

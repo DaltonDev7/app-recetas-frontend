@@ -8,6 +8,8 @@ import { CardModule } from 'primeng/card';
 import {TabViewModule} from 'primeng/tabview';
 import { BadgeModule } from 'primeng/badge';
 import { NivelDificultadModule } from '../nivel-dificultad/nivel-dificultad.module';
+import {RatingModule} from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NivelDificultadModule } from '../nivel-dificultad/nivel-dificultad.modu
     CardModule,
     TabViewModule,
     BadgeModule,
-    NivelDificultadModule
+    NivelDificultadModule,
+    RatingModule,
+    FormsModule
   ],
   providers:[
     GetPostByIdResolver

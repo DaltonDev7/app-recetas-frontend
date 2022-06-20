@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecetasPopularesComponent implements OnInit {
 
+  val1: number;
+
+  val2: number = 3;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

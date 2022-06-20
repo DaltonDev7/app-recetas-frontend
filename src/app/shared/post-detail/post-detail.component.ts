@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import * as moment from 'moment';
+import { getIdCurrentUser } from 'src/app/authentication/store';
+import { SaveCalificacion } from 'src/app/core/models/calificacion-save.model';
 import { PostDetailDTO } from 'src/app/core/models/dto/post-detail.dto';
 import { ImagenesPost } from 'src/app/core/models/imagenes-post.model';
 import { Nutricion } from 'src/app/core/models/Nutricion.model';
+import { CalificacionService } from 'src/app/core/services/calificacion.service';
+import * as fromApp from '../../state/app.state';
 moment.locale('es');
 
 
@@ -19,6 +24,8 @@ export class PostDetailComponent implements OnInit {
   nutricion: Nutricion
   post: PostDetailDTO;
   FechaCreacionFormated: string;
+  val2: number = 1.5;
+  IdUsuario: number;
 
   responsiveOptions: any[] = [
     {
@@ -36,9 +43,13 @@ export class PostDetailComponent implements OnInit {
   ];
 
 
-  constructor(private activedRouted: ActivatedRoute) { }
+  constructor(
+    private calificacionService: CalificacionService,
+    private activedRouted: ActivatedRoute,
+    private store: Store<fromApp.State>) { }
 
   ngOnInit(): void {
+
     this.activedRouted.data.subscribe((data: any) => {
       console.log(data);
       this.imagenesPost = data.post.ImagenesPost
@@ -46,6 +57,27 @@ export class PostDetailComponent implements OnInit {
       if (this.post.Nutricion != null) this.nutricion = this.post.Nutricion
       this.FechaCreacionFormated = moment(this.post.FechaCreacion).fromNow();
     })
+
+    this.store.select((getIdCurrentUser)).subscribe((idUsuario) => {
+      this.IdUsuario = idUsuario
+    })
+
+
+  }
+
+
+  async onRateValue(data: any) {
+
+    let payload: SaveCalificacion = {
+      IdPost: this.post.Id,
+      Calificacion: data.value,
+      IdUsuario: this.IdUsuario
+    }
+
+    await this.calificacionService.save(payload).subscribe((data) => {
+      console.log(data);
+    })
+
   }
 
 }

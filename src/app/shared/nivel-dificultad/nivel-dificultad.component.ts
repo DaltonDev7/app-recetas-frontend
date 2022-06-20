@@ -14,6 +14,7 @@ export class NivelDificultadComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.nivelDificultad);
+    console.log('hola');
 
   }
 

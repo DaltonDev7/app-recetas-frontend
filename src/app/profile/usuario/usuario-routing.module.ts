@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'post',
     loadChildren: () => import('../../shared/post-detail/post-detail.module').then(m => m.PostDetailModule),
   },
+  {
+    path:'edit-user',
+    loadChildren: () => import('../../shared/edit-usuario/editusuario.module').then(m => m.EditusuarioModule)
+  }
 ]
 
 
