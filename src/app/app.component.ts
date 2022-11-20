@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(private router: Router, private store: Store<fromApp.State>) {
 
 
-    this.store.dispatch(authActions.AutoLogin())
+    //this.store.dispatch(authActions.AutoLogin())
 
     this.router.events.subscribe((event) => {
       switch (true) {

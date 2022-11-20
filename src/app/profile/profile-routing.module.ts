@@ -8,13 +8,13 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule),
-    canActivate: [ProfileSelectionGuard],
+  //  canActivate: [ProfileSelectionGuard],
     data: { role: Perfil.USUARIO }
   },
   {
     path: 'administrador',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canActivate: [ProfileSelectionGuard],
+   // canActivate: [ProfileSelectionGuard],
     data: { role: Perfil.ADMINISTRADOR }
   }
 ]

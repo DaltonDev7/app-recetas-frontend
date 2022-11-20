@@ -12,22 +12,22 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
-    canActivate: [AuthGuardGuard]
+    //canActivate: [AuthGuardGuard]
   },
   {
     path: 'seleccion-perfil',
     component: ProfileSelectionComponent,
-    canActivate: [AuthGuardGuard]
+   // canActivate: [AuthGuardGuard]
   },
   {
     path: 'login',
     loadChildren: () => import('./authentication/sign-in/sigin.module').then(m => m.SigInModule),
-    canActivate:[NegateauthGuard]
+   // canActivate:[NegateauthGuard]
   },
   {
     path: 'registrate',
     loadChildren: () => import('./authentication/sign-up/signup.module').then(m => m.SignUpModule),
-    canActivate:[NegateauthGuard]
+   // canActivate:[NegateauthGuard]
   },
   {
     path: '**',
